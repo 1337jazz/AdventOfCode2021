@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Reflection;
 
 namespace AdventOfCode2021
 {
@@ -6,7 +8,11 @@ namespace AdventOfCode2021
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Assembly.GetCallingAssembly().GetTypes()
+                    .Where(t => t.IsSubclassOf(typeof(SolutionBase)))
+                    .OrderBy(t => int.Parse(t.Name.Replace("Day", "").Replace("Solution", "")))
+                    .ToList()
+                    .ForEach(t => Activator.CreateInstance(t));
         }
     }
 }
