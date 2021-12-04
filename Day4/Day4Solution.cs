@@ -80,7 +80,6 @@ namespace AdventOfCode2021.Day4
                                     {
                                         // Winner! Add the board to the list
                                         winningBoards.Add(board);
-                                        Console.WriteLine(board.CalculateScore(int.Parse(number)));
                                     }
                                 }
                             }
